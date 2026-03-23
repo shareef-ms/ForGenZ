@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0D0D0F;
+  color: #F0EFF8;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #161618; }
+::-webkit-scrollbar-thumb { background: #2A2A30; border-radius: 3px; }
+
+/* Mobile base resets */
+img, video { max-width: 100%; }
+button { touch-action: manipulation; }
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(28px, 8vw, 48px) !important; }
+}
