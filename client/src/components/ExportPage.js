@@ -1,5 +1,9 @@
-// ExportPage.js
 import React, { useState, useEffect } from 'react';
+
+// UPDATED: Dynamic API detection
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api' 
+  : 'https://forgenz-production.up.railway.app/api';
 
 const EXPORT_OPTIONS = [
   { id: 'pptx', title: 'PowerPoint .pptx', desc: 'Works in MS PowerPoint & Google Slides', badge: 'recommended', badgeColor: '#D4FF00', available: true },
@@ -29,17 +33,28 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
     setDownloading(true);
     try {
       const themeKey = localStorage.getItem('slideai-theme-key') || 'dark-tech';
-      const response = await fetch('https://forgenz-production.up.railway.app/api/export', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+      
+      // UPDATED: Use dynamic URL
+      const response = await fetch(`${API_BASE_URL}/export`, {
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slides, deckTitle, theme: themeKey })
       });
+      
+      if (!response.ok) throw new Error('Export failed');
+
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; a.download = `${deckTitle || 'ForGenZ'}.pptx`; a.click();
+      a.href = url; 
+      a.download = `${deckTitle || 'ForGenZ'}.pptx`; 
+      a.click();
       window.URL.revokeObjectURL(url);
       setDownloaded(true);
-    } catch (e) { alert('Export failed. Please try again.'); }
+    } catch (e) { 
+      console.error(e);
+      alert('Export failed. Make sure your local server is running on port 5000.'); 
+    }
     setDownloading(false);
   }
 
@@ -56,7 +71,6 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         <h1 style={{ fontSize: m ? '28px' : 'clamp(28px, 4vw, 44px)', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1.5px', textAlign: 'center' }}>Your deck is ready 🎉</h1>
         <p style={{ fontSize: '14px', color: '#555', marginBottom: '32px', fontFamily: 'DM Sans, sans-serif', textAlign: 'center' }}>Choose your format and download in one click.</p>
 
-        {/* Deck card */}
         <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: '12px', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', width: '100%', maxWidth: '520px' }}>
           <div style={{ width: '42px', height: '42px', background: '#1a1a1a', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>📊</div>
           <div>
@@ -68,7 +82,6 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
           </div>
         </div>
 
-        {/* Export options */}
         <div style={{ display: 'grid', gridTemplateColumns: m ? '1fr 1fr' : '1fr 1fr', gap: '10px', width: '100%', maxWidth: '520px', marginBottom: '18px' }}>
           {EXPORT_OPTIONS.map(opt => (
             <div key={opt.id} onClick={() => setSelected(opt.id)} style={{ background: selected === opt.id ? '#111' : '#0d0d0d', border: selected === opt.id ? `1.5px solid ${opt.badgeColor || '#D4FF00'}` : '1.5px solid #1a1a1a', borderRadius: '10px', padding: m ? '14px 14px' : '16px 18px', cursor: 'pointer', transition: 'all 0.15s', position: 'relative', opacity: opt.available ? 1 : 0.6 }}>

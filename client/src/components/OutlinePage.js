@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// --- CONFIGURATION ---
+// This ensures your app talks to localhost while you are developing
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api' 
+  : 'https://forgenz-production.up.railway.app/api';
+
 const SLIDE_TYPES = [
   { type: 'title', label: 'Title', icon: '🏷️' },
   { type: 'bullets', label: 'Bullets', icon: '📝', badge: 'popular' },
@@ -66,11 +72,13 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('https://forgenz-production.up.railway.app/api/outline', { topic, style, slideCount });
+      // UPDATED URL TO USE API_BASE_URL
+      const res = await axios.post(`${API_BASE_URL}/outline`, { topic, style, slideCount });
       if (res.data.outline?.length > 0) setOutline(res.data.outline);
       else setError('Could not generate outline. Please try again.');
     } catch (e) {
-      setError('Failed to connect. Make sure server is running.');
+      console.error(e);
+      setError('Failed to connect. Make sure server is running on port 5000.');
     }
     setLoading(false);
   }
@@ -79,7 +87,8 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
     setBuilding(true);
     try {
       const themeId = localStorage.getItem('forgenz-theme-id') || 'dark-tech';
-      const res = await axios.post('https://forgenz-production.up.railway.app/api/generate', {
+      // UPDATED URL TO USE API_BASE_URL
+      const res = await axios.post(`${API_BASE_URL}/generate`, {
         topic, style, slideCount: outline.length, detail, outline
       });
       const { title, slides, fonts, speakerNotes } = res.data;
@@ -91,6 +100,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
       if (fonts) localStorage.setItem('slideai-fonts', JSON.stringify(fonts));
       nav.toBuilder(outline, slides, title, speakerNotes || {});
     } catch (e) {
+      console.error(e);
       setError('Failed to build deck. Please try again.');
       setBuilding(false);
     }
