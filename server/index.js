@@ -1,32 +1,34 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const generateRoute = require('./routes/generate');
-const exportRoute = require('./routes/export');
-const regenerateRoute = require('./routes/regenerate');
-const imageRoute = require('./routes/image');
-const outlineRoute = require('./routes/outline');
-const assistantRoute = require('./routes/assistant');
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-dotenv.config();
+// This logic handles: 1. Local Dev, 2. Mobile via IP, 3. Production
+const getBaseURL = () => {
+  if (window.location.hostname === 'localhost') return 'http://localhost:5000/api';
+  // If you are using a public backend URL, put it here:
+  return 'https://forgenz-production.up.railway.app/api';
+};
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const API_BASE_URL = getBaseURL();
 
-app.use(cors());
-app.use(express.json());
+// ... rest of your SLIDE_TYPES and THEME_MAP constants ...
 
-app.use('/api/generate', generateRoute);
-app.use('/api/export', exportRoute);
-app.use('/api/regenerate', regenerateRoute);
-app.use('/api/image', imageRoute);
-app.use('/api/outline', outlineRoute);
-app.use('/api/assistant', assistantRoute);
+export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
+  const [outline, setOutline] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-app.get('/', (req, res) => {
-  res.json({ message: 'SlideAI Backend is running!' });
-});
+  // Update your axios calls to use the dynamic API_BASE_URL
+  async function generateOutline() {
+    setLoading(true);
+    setError('');
+    try {
+      const res = await axios.post(`${API_BASE_URL}/outline`, { topic, style, slideCount });
+      if (res.data.outline) setOutline(res.data.outline);
+    } catch (e) {
+      setError('Failed to connect to the AI server. If testing locally, ensure the backend is running.');
+    }
+    setLoading(false);
+  }
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+  // ... rest of your component code ...
+}
