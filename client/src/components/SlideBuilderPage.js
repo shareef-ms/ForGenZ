@@ -3,7 +3,7 @@ import axios from 'axios';
 import SlideViewer from './SlideViewer';
 import SlideEditor from './SlideEditor';
 
-const API = 'https://forgenz-pro.up.railway.app';
+const API = 'http://localhost:5000';
 
 const THEMES = [
   { id: 'dark-tech',      label: 'Dark Tech',    color: '#00D2FF', bg: '#0D1117', accent: '#00D2FF', accent2: '#6C5CE7', gradients: [['#0D1117','#1A2332'],['#0A1628','#162A4A'],['#0A0E1A','#162040'],['#111827','#0A1628']] },

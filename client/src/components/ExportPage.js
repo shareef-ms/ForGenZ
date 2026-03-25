@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API = 'https://forgenz-pro.up.railway.app';
+const API = 'http://localhost:5000';
 
 const EXPORT_OPTIONS = [
   { id: 'pptx', title: 'PowerPoint .pptx', desc: 'Works in MS PowerPoint & Google Slides', badge: 'recommended', badgeColor: '#D4FF00', available: true },
