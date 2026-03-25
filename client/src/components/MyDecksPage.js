@@ -75,7 +75,7 @@ export default function MyDecksPage({ nav, decks }) {
           <div style={{ fontSize: m ? 'clamp(20px, 6vw, 26px)' : 'clamp(24px, 3vw, 32px)', fontWeight: '800', letterSpacing: '-1px', marginBottom: '5px' }}>
             My Decks 📁
           </div>
-          <div style={{ fontSize: '13px', color: '#555', fontFamily: 'DM Sans, sans-serif' }}>
+          <div style={{ fontSize: '13px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>
             {decks.length} presentation{decks.length !== 1 ? 's' : ''} generated
           </div>
         </div>

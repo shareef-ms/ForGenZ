@@ -60,7 +60,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         <div style={{ fontSize: m ? '18px' : '22px', fontWeight: '800', cursor: 'pointer' }} onClick={nav.toLanding}>
           For<span style={{ color: '#D4FF00' }}>GenZ</span>
         </div>
-        <button onClick={nav.toBuilder2} style={{ background: 'none', border: 'none', color: '#555', fontSize: '13px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>
+        <button onClick={nav.toBuilder2} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>
           ← Back to Editor
         </button>
       </nav>
@@ -69,7 +69,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         <h1 style={{ fontSize: m ? '26px' : 'clamp(28px, 4vw, 44px)', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1.5px', textAlign: 'center' }}>
           Your deck is ready 🎉
         </h1>
-        <p style={{ fontSize: m ? '13px' : '15px', color: '#555', marginBottom: '28px', fontFamily: 'DM Sans, sans-serif', textAlign: 'center' }}>
+        <p style={{ fontSize: m ? '13px' : '15px', color: '#e0e0e0', marginBottom: '28px', fontFamily: 'DM Sans, sans-serif', textAlign: 'center' }}>
           Choose your format and download in one click.
         </p>
 
@@ -104,7 +104,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
                   <span style={{ fontSize: '9px', padding: '2px 6px', background: `${opt.badgeColor}20`, color: opt.badgeColor, border: `1px solid ${opt.badgeColor}40`, borderRadius: '4px', fontWeight: '700' }}>{opt.badge}</span>
                 )}
               </div>
-              <div style={{ fontSize: m ? '10px' : '12px', color: '#555', fontFamily: 'DM Sans, sans-serif' }}>{opt.desc}</div>
+              <div style={{ fontSize: m ? '10px' : '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{opt.desc}</div>
               {!opt.available && <div style={{ marginTop: '5px', fontSize: '10px', color: '#2a2a2a', fontFamily: 'DM Sans, sans-serif' }}>Coming soon</div>}
             </div>
           ))}
@@ -129,8 +129,8 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         {/* Post download */}
         {downloaded && (
           <div style={{ display: 'flex', gap: '10px', marginTop: '16px', width: '100%', maxWidth: '520px', flexDirection: m ? 'column' : 'row' }}>
-            <button onClick={nav.toTopic} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#666', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Create Another Deck</button>
-            <button onClick={nav.toMyDecks} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#666', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>View My Decks</button>
+            <button onClick={nav.toTopic} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Create Another Deck</button>
+            <button onClick={nav.toMyDecks} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>View My Decks</button>
           </div>
         )}
       </div>

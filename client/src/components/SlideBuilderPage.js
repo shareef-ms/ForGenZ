@@ -290,8 +290,8 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
           {!m && (
             <>
               <div style={{ width: '1px', height: '18px', background: '#222' }} />
-              <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#555', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>🏠 Home</button>
-              <button onClick={nav.toTopic} style={{ background: 'none', border: 'none', color: '#555', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>← Back</button>
+              <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>🏠 Home</button>
+              <button onClick={nav.toTopic} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>← Back</button>
             </>
           )}
         </div>
@@ -306,10 +306,10 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
           {m && (
             <button onClick={() => setShowPanel(!showPanel)} style={{ padding: '7px 10px', background: showPanel ? '#D4FF0015' : 'transparent', border: `1px solid ${showPanel ? '#D4FF00' : '#333'}`, borderRadius: '7px', color: showPanel ? '#D4FF00' : '#888', fontSize: '13px', cursor: 'pointer' }}>⚙️</button>
           )}
-          <button onClick={() => currentSlide && setEditingSlide(currentSlide)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#888', fontSize: '12px', cursor: 'pointer' }}>
+          <button onClick={() => currentSlide && setEditingSlide(currentSlide)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>
             {m ? '✎' : '✎ Edit'}
           </button>
-          <button onClick={() => setShowViewer(true)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#888', fontSize: '12px', cursor: 'pointer' }}>▶</button>
+          <button onClick={() => setShowViewer(true)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>▶</button>
           <button onClick={() => nav.toExport(slides, deckTitle, speakerNotes)} style={{ padding: m ? '7px 12px' : '8px 16px', background: '#D4FF00', color: '#000', border: 'none', borderRadius: '7px', fontSize: m ? '12px' : '13px', fontWeight: '800', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>
             {m ? '↓' : 'Export ↓'}
           </button>
@@ -370,7 +370,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               {!m && speakerNotes[currentSlide.num] && (
                 <div style={{ marginTop: '10px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '8px', padding: '10px 14px', flexShrink: 0 }}>
                   <div style={{ fontSize: '10px', color: '#333', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '5px', fontFamily: 'DM Sans, sans-serif' }}>Speaker Notes</div>
-                  <div style={{ fontSize: '12px', color: '#555', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' }}>{speakerNotes[currentSlide.num]}</div>
+                  <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' }}>{speakerNotes[currentSlide.num]}</div>
                 </div>
               )}
             </>
@@ -430,7 +430,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               <button onClick={askAI} disabled={aiLoading || !aiMessage.trim()} style={{ width: '100%', padding: '10px', background: aiLoading ? '#111' : '#D4FF00', color: aiLoading ? '#444' : '#000', border: 'none', borderRadius: '7px', fontSize: '13px', fontWeight: '800', cursor: aiLoading ? 'not-allowed' : 'pointer', fontFamily: 'Syne, sans-serif' }}>
                 {aiLoading ? 'Thinking...' : 'Ask AI ✦'}
               </button>
-              {aiReply && <div style={{ marginTop: '8px', padding: '8px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', fontSize: '11px', color: '#888', fontFamily: 'DM Sans, sans-serif' }}>{aiReply}</div>}
+              {aiReply && <div style={{ marginTop: '8px', padding: '8px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{aiReply}</div>}
               <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {['Make more detailed', 'Add statistics', 'Add speaker notes', 'Add notes to all slides', 'Simplify content'].map((action, i) => (
                   <button key={i} onClick={() => setAiMessage(action)} style={{ padding: '6px 8px', background: 'transparent', border: '1px solid #111', borderRadius: '5px', color: '#444', fontSize: '11px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', textAlign: 'left' }}>{action}</button>

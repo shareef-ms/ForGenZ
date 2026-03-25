@@ -60,8 +60,8 @@ export default function TopicInputPage({ nav }) {
           For<span style={{ color: '#D4FF00' }}>GenZ</span>
         </div>
         <div style={{ display: 'flex', gap: m ? '8px' : '16px', alignItems: 'center' }}>
-          {!m && <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#555', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Home</button>}
-          {!m && <button onClick={nav.toMyDecks} style={{ background: 'none', border: 'none', color: '#555', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>My Decks</button>}
+          {!m && <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Home</button>}
+          {!m && <button onClick={nav.toMyDecks} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>My Decks</button>}
           <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '700', color: '#D4FF00', border: '1px solid #333' }}>U</div>
         </div>
       </nav>
@@ -70,7 +70,7 @@ export default function TopicInputPage({ nav }) {
         <h1 style={{ fontSize: m ? 'clamp(22px, 6vw, 32px)' : 'clamp(28px, 4vw, 42px)', fontWeight: '800', textAlign: 'center', marginBottom: '8px', letterSpacing: '-1.5px' }}>
           What's your presentation about? 🔥
         </h1>
-        <p style={{ fontSize: m ? '13px' : '15px', color: '#555', textAlign: 'center', marginBottom: '28px', fontFamily: 'DM Sans, sans-serif' }}>
+        <p style={{ fontSize: m ? '13px' : '15px', color: '#e0e0e0', textAlign: 'center', marginBottom: '28px', fontFamily: 'DM Sans, sans-serif' }}>
           Type your topic below. AI will build your full deck in ~15 seconds.
         </p>
 
@@ -116,7 +116,7 @@ export default function TopicInputPage({ nav }) {
         {/* Slide count + Tone */}
         <div style={{ display: 'grid', gridTemplateColumns: m ? '1fr' : '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
           <div style={{ background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '10px', padding: '14px 16px' }}>
-            <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Number of Slides</div>
+            <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Number of Slides</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {SLIDE_COUNTS.map(n => (
                 <button key={n} onClick={() => setSlideCount(n)} style={{
@@ -133,7 +133,7 @@ export default function TopicInputPage({ nav }) {
           </div>
 
           <div style={{ background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '10px', padding: '14px 16px' }}>
-            <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Tone</div>
+            <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Tone</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {TONES.map(t => (
                 <button key={t} onClick={() => setTone(t)} style={{
@@ -153,7 +153,7 @@ export default function TopicInputPage({ nav }) {
         {/* Theme picker */}
         <div style={{ marginBottom: '22px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <div style={{ fontSize: '12px', color: '#555', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'DM Sans, sans-serif' }}>Presentation Theme</div>
+            <div style={{ fontSize: '12px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'DM Sans, sans-serif' }}>Presentation Theme</div>
             <div style={{ fontSize: '12px', color: '#D4FF00', fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>✦ {themeObj.label} selected</div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: m ? 'repeat(4, 1fr)' : 'repeat(6, 1fr)', gap: '8px' }}>
@@ -164,7 +164,7 @@ export default function TopicInputPage({ nav }) {
                     <div key={i} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c }} />
                   ))}
                 </div>
-                <div style={{ fontSize: '9px', color: '#888', textAlign: 'center', padding: '4px', background: '#111', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{t.label}</div>
+                <div style={{ fontSize: '9px', color: '#e0e0e0', textAlign: 'center', padding: '4px', background: '#111', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{t.label}</div>
                 {selectedTheme === t.id && (
                   <div style={{ position: 'absolute', top: '3px', right: '3px', width: '13px', height: '13px', background: '#D4FF00', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px', color: '#000', fontWeight: '800' }}>✓</div>
                 )}

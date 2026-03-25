@@ -163,12 +163,12 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
           For<span style={{ color: '#D4FF00' }}>GenZ</span>
         </div>
         {!m && (
-          <div style={{ fontSize: '13px', color: '#555', fontFamily: 'DM Sans, sans-serif' }}>
+          <div style={{ fontSize: '13px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>
             Outline · <span style={{ color: '#D4FF00' }}>{topic}</span>
           </div>
         )}
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button onClick={nav.toTopic} style={{ padding: m ? '7px 10px' : '8px 16px', background: 'transparent', border: '1px solid #333', borderRadius: '8px', color: '#888', fontSize: m ? '12px' : '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>← Back</button>
+          <button onClick={nav.toTopic} style={{ padding: m ? '7px 10px' : '8px 16px', background: 'transparent', border: '1px solid #333', borderRadius: '8px', color: '#e0e0e0', fontSize: m ? '12px' : '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>← Back</button>
           <button
             onClick={buildDeck}
             disabled={building || loading || outline.length === 0}
@@ -196,17 +196,17 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '5px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: TYPE_COLORS[selectedThemeId] || '#D4FF00', flexShrink: 0 }} />
-                <span style={{ fontSize: '10px', color: '#555', fontFamily: 'DM Sans, sans-serif' }}>{selectedThemeId}</span>
+                <span style={{ fontSize: '10px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{selectedThemeId}</span>
               </div>
-              <button onClick={addSlide} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#888', fontSize: '11px', cursor: 'pointer' }}>+ Add</button>
-              <button onClick={shuffle} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#888', fontSize: '11px', cursor: 'pointer' }}>⇄</button>
-              <button onClick={generateOutline} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#888', fontSize: '11px', cursor: 'pointer' }}>↺</button>
+              <button onClick={addSlide} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer' }}>+ Add</button>
+              <button onClick={shuffle} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer' }}>⇄</button>
+              <button onClick={generateOutline} style={{ padding: '6px 10px', background: '#111', border: '1px solid #222', borderRadius: '7px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer' }}>↺</button>
             </div>
           </div>
 
           {/* Tip */}
           {!loading && outline.length > 0 && (
-            <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: '8px', padding: '10px 14px', marginBottom: '14px', fontSize: '12px', color: '#555', fontFamily: 'DM Sans, sans-serif' }}>{tip}</div>
+            <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: '8px', padding: '10px 14px', marginBottom: '14px', fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{tip}</div>
           )}
 
           {/* Loading */}
@@ -318,7 +318,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
                   .sort((a, b) => b[1] - a[1]).map(([type, count]) => (
                     <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                       <div style={{ width: `${(count / outline.length) * 80}px`, height: '4px', background: TYPE_COLORS[type] || '#444', borderRadius: '2px', minWidth: '8px' }} />
-                      <span style={{ fontSize: '11px', color: '#555', fontFamily: 'DM Sans, sans-serif', flex: 1 }}>{type}</span>
+                      <span style={{ fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', flex: 1 }}>{type}</span>
                       <span style={{ fontSize: '11px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>{count}</span>
                     </div>
                   ))
@@ -335,7 +335,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
               ].map(({ label, value }) => (
                 <div key={label} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #111' }}>
                   <span style={{ fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
-                  <span style={{ fontSize: '12px', color: '#888', fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>{value}</span>
+                  <span style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>{value}</span>
                 </div>
               ))}
             </div>

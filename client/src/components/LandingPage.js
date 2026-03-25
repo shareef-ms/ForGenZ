@@ -20,15 +20,15 @@ export default function LandingPage({ nav }) {
     hero: { padding: m ? '44px 20px 36px' : '80px 40px 60px', maxWidth: '900px' },
     badge: { display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 14px', border: '1px solid #333', borderRadius: '6px', fontSize: '13px', color: '#aaa', marginBottom: '24px', fontFamily: 'DM Sans, sans-serif' },
     h1: { fontSize: m ? 'clamp(38px, 11vw, 56px)' : 'clamp(48px, 7vw, 88px)', fontWeight: '800', lineHeight: '1.0', letterSpacing: m ? '-2px' : '-3px', marginBottom: '20px', color: '#fff' },
-    subtext: { fontSize: m ? '15px' : '18px', color: '#666', maxWidth: '500px', lineHeight: '1.6', marginBottom: '32px', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0' },
+    subtext: { fontSize: m ? '15px' : '18px', color: '#e0e0e0', maxWidth: '500px', lineHeight: '1.6', marginBottom: '32px', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0' },
     btnRow: { display: 'flex', alignItems: 'center', gap: m ? '14px' : '20px', flexWrap: 'wrap' },
     primaryBtn: { padding: m ? '13px 26px' : '16px 36px', background: '#D4FF00', color: '#000', border: 'none', borderRadius: '8px', fontFamily: 'Syne, sans-serif', fontSize: m ? '14px' : '16px', fontWeight: '700', cursor: 'pointer' },
-    secondaryText: { fontSize: '13px', color: '#555', fontFamily: 'DM Sans, sans-serif' },
+    secondaryText: { fontSize: '13px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' },
     features: { display: 'grid', gridTemplateColumns: m ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: '#1a1a1a', borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a', margin: m ? '40px 0 0' : '60px 0 0' },
     feature: { padding: m ? '22px 20px' : '32px 40px', background: '#0A0A0A' },
     featureIcon: { fontSize: '22px', marginBottom: '10px' },
     featureTitle: { fontSize: m ? '13px' : '15px', fontWeight: '700', color: '#fff', marginBottom: '5px' },
-    featureText: { fontSize: '12px', color: '#555', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.5' },
+    featureText: { fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.5' },
     howSection: { padding: m ? '44px 20px' : '80px 40px' },
     sectionLabel: { fontSize: '12px', color: '#D4FF00', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '14px', fontFamily: 'DM Sans, sans-serif' },
     sectionTitle: { fontSize: m ? 'clamp(22px, 6vw, 32px)' : 'clamp(28px, 4vw, 44px)', fontWeight: '800', letterSpacing: '-1px', marginBottom: '36px', color: '#fff' },
@@ -36,7 +36,7 @@ export default function LandingPage({ nav }) {
     step: { borderTop: '1px solid #222', paddingTop: '20px' },
     stepNum: { fontSize: '13px', color: '#D4FF00', fontWeight: '700', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' },
     stepTitle: { fontSize: m ? '16px' : '18px', fontWeight: '700', color: '#fff', marginBottom: '6px' },
-    stepText: { fontSize: '14px', color: '#555', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' },
+    stepText: { fontSize: '14px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' },
     cta: { padding: m ? '44px 20px' : '80px 40px', borderTop: '1px solid #1a1a1a', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' },
     ctaTitle: { fontSize: m ? 'clamp(26px, 8vw, 40px)' : 'clamp(32px, 5vw, 56px)', fontWeight: '800', letterSpacing: '-2px', color: '#fff', maxWidth: '600px', lineHeight: '1.1' },
     footer: { padding: m ? '18px 20px' : '24px 40px', borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' },
@@ -49,8 +49,8 @@ export default function LandingPage({ nav }) {
       <nav style={S.nav}>
         <div style={S.logo}>For<span style={S.logoAccent}>GenZ</span></div>
         <div style={{ display: 'flex', alignItems: 'center', gap: m ? '10px' : '24px' }}>
-          {!m && <span style={{ fontSize: '14px', color: '#888', fontFamily: 'Syne, sans-serif' }}>always free 🆓</span>}
-          {!m && <button style={{ fontSize: '14px', color: '#888', cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'Syne, sans-serif' }} onClick={nav.toMyDecks}>My Decks</button>}
+          {!m && <span style={{ fontSize: '14px', color: '#e0e0e0', fontFamily: 'Syne, sans-serif' }}>always free 🆓</span>}
+          {!m && <button style={{ fontSize: '14px', color: '#e0e0e0', cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'Syne, sans-serif' }} onClick={nav.toMyDecks}>My Decks</button>}
           <button style={S.ctaBtn} onClick={nav.toTopic}>{m ? 'Start 🔥' : 'Get Started 🔥'}</button>
         </div>
       </nav>
@@ -112,7 +112,7 @@ export default function LandingPage({ nav }) {
       {/* CTA */}
       <div style={S.cta}>
         <div style={S.ctaTitle}>Stop procrastinating fr 💀</div>
-        <p style={{ fontSize: m ? '14px' : '16px', color: '#555', fontFamily: 'DM Sans, sans-serif', margin: 0 }}>
+        <p style={{ fontSize: m ? '14px' : '16px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', margin: 0 }}>
           Your assignment is due soon. Let AI do the heavy lifting.
         </p>
         <button style={S.primaryBtn} onClick={nav.toTopic}>Generate My Deck Now 🚀</button>
