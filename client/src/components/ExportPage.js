@@ -56,7 +56,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
   return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', color: '#fff', fontFamily: 'Syne, sans-serif', display: 'flex', flexDirection: 'column' }}>
       {/* Nav */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '14px 18px' : '18px 40px', borderBottom: '1px solid #1a1a1a', position: 'sticky', top: 0, background: '#0A0A0A', zIndex: 10 }}>
+      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '14px 18px' : '18px 40px', borderBottom: '1px solid #333', position: 'sticky', top: 0, background: '#0A0A0A', zIndex: 10 }}>
         <div style={{ fontSize: m ? '18px' : '22px', fontWeight: '800', cursor: 'pointer' }} onClick={nav.toLanding}>
           For<span style={{ color: '#D4FF00' }}>GenZ</span>
         </div>
@@ -74,7 +74,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         </p>
 
         {/* Deck info card */}
-        <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: '12px', padding: m ? '14px 16px' : '20px 24px', display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px', width: '100%', maxWidth: '520px' }}>
+        <div style={{ background: '#111', border: '1px solid #333', borderRadius: '12px', padding: m ? '14px 16px' : '20px 24px', display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px', width: '100%', maxWidth: '520px' }}>
           <div style={{ width: m ? '38px' : '48px', height: m ? '38px' : '48px', background: '#1a1a1a', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: m ? '18px' : '22px', flexShrink: 0 }}>📊</div>
           <div style={{ minWidth: 0 }}>
             <div style={{ fontSize: m ? '14px' : '17px', fontWeight: '700', color: '#fff', marginBottom: '3px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{deckTitle}</div>
@@ -90,10 +90,10 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
           {EXPORT_OPTIONS.map(opt => (
             <div key={opt.id} onClick={() => setSelected(opt.id)} style={{
               background: selected === opt.id ? '#111' : '#0d0d0d',
-              border: selected === opt.id ? `1.5px solid ${opt.badgeColor || '#D4FF00'}` : '1.5px solid #1a1a1a',
+              border: selected === opt.id ? `1.5px solid ${opt.badgeColor || '#D4FF00'}` : '1.5px solid #555',
               borderRadius: '10px', padding: m ? '12px 14px' : '16px 18px',
               cursor: 'pointer', transition: 'all 0.15s', position: 'relative',
-              opacity: opt.available ? 1 : 0.6
+              opacity: opt.available ? 1 : 0.7
             }}>
               {selected === opt.id && (
                 <div style={{ position: 'absolute', top: '8px', right: '8px', width: '16px', height: '16px', background: opt.badgeColor || '#D4FF00', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', color: '#000', fontWeight: '800' }}>✓</div>
@@ -105,7 +105,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
                 )}
               </div>
               <div style={{ fontSize: m ? '10px' : '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{opt.desc}</div>
-              {!opt.available && <div style={{ marginTop: '5px', fontSize: '10px', color: '#2a2a2a', fontFamily: 'DM Sans, sans-serif' }}>Coming soon</div>}
+              {!opt.available && <div style={{ marginTop: '5px', fontSize: '10px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>Coming soon</div>}
             </div>
           ))}
         </div>
@@ -114,8 +114,8 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         <button onClick={handleDownload} disabled={downloading} style={{
           width: '100%', maxWidth: '520px', padding: m ? '16px' : '18px',
           background: downloading ? '#1a1a1a' : downloaded ? '#1a1a1a' : '#D4FF00',
-          color: downloading ? '#444' : downloaded ? '#D4FF00' : '#000',
-          border: downloaded ? '1.5px solid #D4FF00' : 'none',
+          color: downloading ? '#e0e0e0' : downloaded ? '#D4FF00' : '#000',
+          border: downloaded ? '1.5px solid #D4FF00' : downloading ? '1.5px solid #555' : 'none',
           borderRadius: '12px', fontSize: m ? '15px' : '17px', fontWeight: '800',
           cursor: downloading ? 'not-allowed' : 'pointer',
           fontFamily: 'Syne, sans-serif', letterSpacing: '-0.5px', transition: 'all 0.2s'
@@ -129,8 +129,8 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
         {/* Post download */}
         {downloaded && (
           <div style={{ display: 'flex', gap: '10px', marginTop: '16px', width: '100%', maxWidth: '520px', flexDirection: m ? 'column' : 'row' }}>
-            <button onClick={nav.toTopic} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Create Another Deck</button>
-            <button onClick={nav.toMyDecks} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #222', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>View My Decks</button>
+            <button onClick={nav.toTopic} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #555', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Create Another Deck</button>
+            <button onClick={nav.toMyDecks} style={{ flex: 1, padding: '11px 20px', background: 'transparent', border: '1px solid #555', borderRadius: '8px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>View My Decks</button>
           </div>
         )}
       </div>

@@ -4,6 +4,7 @@ import SlideViewer from './SlideViewer';
 import SlideEditor from './SlideEditor';
 
 import API from './config';
+
 const THEMES = [
   { id: 'dark-tech',      label: 'Dark Tech',    color: '#00D2FF', bg: '#0D1117', accent: '#00D2FF', accent2: '#6C5CE7', gradients: [['#0D1117','#1A2332'],['#0A1628','#162A4A'],['#0A0E1A','#162040'],['#111827','#0A1628']] },
   { id: 'neon-dark',      label: 'Neon',         color: '#00FF88', bg: '#050510', accent: '#00FF88', accent2: '#FF00FF', gradients: [['#050510','#0A0A20'],['#050510','#0F0A25'],['#030310','#080818'],['#050510','#0A0A20']] },
@@ -32,7 +33,7 @@ function SlidePreview({ slide, themeObj, titleFont, bodyFont }) {
   const bg = themeObj.gradients[0] || ['#0D1117', '#1A2332'];
   const accent = themeObj.accent;
   const accent2 = themeObj.accent2;
-  const muted = 'rgba(255,255,255,0.65)';
+  const muted = 'rgba(255,255,255,0.85)';
   const tf = `'${titleFont}', sans-serif`;
   const bf = `'${bodyFont}', sans-serif`;
 
@@ -51,7 +52,7 @@ function SlidePreview({ slide, themeObj, titleFont, bodyFont }) {
           {(slide.items || []).slice(0, 4).map((item, i) => (
             <div key={i} style={{ display: 'flex', gap: '7px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.05)', borderRadius: '5px', padding: '5px 8px' }}>
               <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: accent, marginTop: '5px', flexShrink: 0 }} />
-              <span style={{ fontFamily: bf, fontSize: 'clamp(9px, 1.1vw, 12px)', color: 'rgba(255,255,255,0.82)', lineHeight: '1.4' }}>{item}</span>
+              <span style={{ fontFamily: bf, fontSize: 'clamp(9px, 1.1vw, 12px)', color: muted, lineHeight: '1.4' }}>{item}</span>
             </div>
           ))}
         </div>
@@ -201,7 +202,7 @@ function SlidePreview({ slide, themeObj, titleFont, bodyFont }) {
         </div>
       )}
 
-      <div style={{ position: 'absolute', bottom: '6px', right: '10px', fontSize: '8px', color: 'rgba(255,255,255,0.15)', fontFamily: bf }}>{slide.num}</div>
+      <div style={{ position: 'absolute', bottom: '6px', right: '10px', fontSize: '8px', color: 'rgba(255,255,255,0.4)', fontFamily: bf }}>{slide.num}</div>
     </div>
   );
 }
@@ -282,14 +283,14 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
       {editingSlide && <SlideEditor slide={editingSlide} onSave={handleSaveEdit} onClose={() => setEditingSlide(null)} />}
 
       {/* Nav */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '10px 14px' : '12px 20px', borderBottom: '1px solid #1a1a1a', flexShrink: 0, background: '#0A0A0A', zIndex: 10 }}>
+      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '10px 14px' : '12px 20px', borderBottom: '1px solid #333', flexShrink: 0, background: '#0A0A0A', zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: m ? '8px' : '14px' }}>
           <div style={{ fontSize: m ? '17px' : '20px', fontWeight: '800', cursor: 'pointer' }} onClick={nav.toLanding}>
             For<span style={{ color: '#D4FF00' }}>GenZ</span>
           </div>
           {!m && (
             <>
-              <div style={{ width: '1px', height: '18px', background: '#222' }} />
+              <div style={{ width: '1px', height: '18px', background: '#555' }} />
               <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>🏠 Home</button>
               <button onClick={nav.toTopic} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>← Back</button>
             </>
@@ -304,12 +305,12 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
         <div style={{ display: 'flex', gap: m ? '6px' : '8px', alignItems: 'center' }}>
           {m && (
-            <button onClick={() => setShowPanel(!showPanel)} style={{ padding: '7px 10px', background: showPanel ? '#D4FF0015' : 'transparent', border: `1px solid ${showPanel ? '#D4FF00' : '#333'}`, borderRadius: '7px', color: showPanel ? '#D4FF00' : '#888', fontSize: '13px', cursor: 'pointer' }}>⚙️</button>
+            <button onClick={() => setShowPanel(!showPanel)} style={{ padding: '7px 10px', background: showPanel ? '#D4FF0015' : 'transparent', border: `1px solid ${showPanel ? '#D4FF00' : '#555'}`, borderRadius: '7px', color: showPanel ? '#D4FF00' : '#e0e0e0', fontSize: '13px', cursor: 'pointer' }}>⚙️</button>
           )}
-          <button onClick={() => currentSlide && setEditingSlide(currentSlide)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>
+          <button onClick={() => currentSlide && setEditingSlide(currentSlide)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #555', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>
             {m ? '✎' : '✎ Edit'}
           </button>
-          <button onClick={() => setShowViewer(true)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #333', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>▶</button>
+          <button onClick={() => setShowViewer(true)} style={{ padding: m ? '7px 10px' : '7px 12px', background: 'transparent', border: '1px solid #555', borderRadius: '7px', color: '#e0e0e0', fontSize: '12px', cursor: 'pointer' }}>▶</button>
           <button onClick={() => nav.toExport(slides, deckTitle, speakerNotes)} style={{ padding: m ? '7px 12px' : '8px 16px', background: '#D4FF00', color: '#000', border: 'none', borderRadius: '7px', fontSize: m ? '12px' : '13px', fontWeight: '800', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>
             {m ? '↓' : 'Export ↓'}
           </button>
@@ -321,18 +322,18 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
         {/* Left thumbnails — desktop only */}
         {!m && (
-          <div style={{ width: '165px', borderRight: '1px solid #1a1a1a', overflowY: 'auto', padding: '10px 8px', flexShrink: 0, background: '#0A0A0A' }}>
-            <div style={{ fontSize: '10px', color: '#2a2a2a', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>{slides.length} slides</div>
+          <div style={{ width: '165px', borderRight: '1px solid #333', overflowY: 'auto', padding: '10px 8px', flexShrink: 0, background: '#0A0A0A' }}>
+            <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>{slides.length} slides</div>
             {slides.map((slide, i) => (
               <div key={slide.num} style={{ marginBottom: '8px' }}>
-                <div onClick={() => setCurrentIdx(i)} style={{ borderRadius: '5px', overflow: 'hidden', cursor: 'pointer', border: i === currentIdx ? `2px solid ${accent}` : '2px solid #1a1a1a', background: `linear-gradient(135deg, ${currentTheme.gradients[i % currentTheme.gradients.length][0]}, ${currentTheme.gradients[i % currentTheme.gradients.length][1]})`, aspectRatio: '16/9', position: 'relative' }}>
+                <div onClick={() => setCurrentIdx(i)} style={{ borderRadius: '5px', overflow: 'hidden', cursor: 'pointer', border: i === currentIdx ? `2px solid ${accent}` : '2px solid #555', background: `linear-gradient(135deg, ${currentTheme.gradients[i % currentTheme.gradients.length][0]}, ${currentTheme.gradients[i % currentTheme.gradients.length][1]})`, aspectRatio: '16/9', position: 'relative' }}>
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: accent }} />
                   <div style={{ padding: '6px', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', boxSizing: 'border-box' }}>
-                    <div style={{ fontSize: '6px', color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans, sans-serif', marginBottom: '2px' }}>{String(i + 1).padStart(2, '0')}</div>
+                    <div style={{ fontSize: '6px', color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '2px' }}>{String(i + 1).padStart(2, '0')}</div>
                     <div style={{ fontSize: '6px', fontWeight: '700', color: '#fff', lineHeight: '1.2', fontFamily: 'Syne, sans-serif', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{slide.heading}</div>
                   </div>
                 </div>
-                <div style={{ fontSize: '9px', color: i === currentIdx ? accent : '#333', marginTop: '2px', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{slide.heading}</div>
+                <div style={{ fontSize: '9px', color: i === currentIdx ? accent : '#e0e0e0', marginTop: '2px', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{slide.heading}</div>
               </div>
             ))}
           </div>
@@ -352,7 +353,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               {m && (
                 <div style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '8px 0', flexShrink: 0 }}>
                   {slides.map((slide, i) => (
-                    <div key={slide.num} onClick={() => setCurrentIdx(i)} style={{ width: '48px', height: '28px', borderRadius: '3px', flexShrink: 0, cursor: 'pointer', background: `linear-gradient(135deg, ${currentTheme.gradients[0][0]}, ${currentTheme.gradients[0][1]})`, border: i === currentIdx ? `2px solid ${accent}` : '2px solid #1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div key={slide.num} onClick={() => setCurrentIdx(i)} style={{ width: '48px', height: '28px', borderRadius: '3px', flexShrink: 0, cursor: 'pointer', background: `linear-gradient(135deg, ${currentTheme.gradients[0][0]}, ${currentTheme.gradients[0][1]})`, border: i === currentIdx ? `2px solid ${accent}` : '2px solid #555', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <div style={{ fontSize: '7px', color: '#fff', fontFamily: 'Syne, sans-serif', fontWeight: '700' }}>{i + 1}</div>
                     </div>
                   ))}
@@ -361,14 +362,14 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
               {/* Prev/Next */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', paddingTop: '10px', flexShrink: 0 }}>
-                <button onClick={() => setCurrentIdx(i => Math.max(0, i - 1))} disabled={currentIdx === 0} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #1a1a1a', borderRadius: '7px', color: currentIdx === 0 ? '#2a2a2a' : '#666', cursor: currentIdx === 0 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>← Prev</button>
+                <button onClick={() => setCurrentIdx(i => Math.max(0, i - 1))} disabled={currentIdx === 0} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #555', borderRadius: '7px', color: currentIdx === 0 ? '#555' : '#e0e0e0', cursor: currentIdx === 0 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>← Prev</button>
                 <span style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{currentIdx + 1} / {slides.length}</span>
-                <button onClick={() => setCurrentIdx(i => Math.min(slides.length - 1, i + 1))} disabled={currentIdx === slides.length - 1} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #1a1a1a', borderRadius: '7px', color: currentIdx === slides.length - 1 ? '#2a2a2a' : '#666', cursor: currentIdx === slides.length - 1 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>Next →</button>
+                <button onClick={() => setCurrentIdx(i => Math.min(slides.length - 1, i + 1))} disabled={currentIdx === slides.length - 1} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #555', borderRadius: '7px', color: currentIdx === slides.length - 1 ? '#555' : '#e0e0e0', cursor: currentIdx === slides.length - 1 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>Next →</button>
               </div>
 
               {/* Speaker notes desktop */}
               {!m && speakerNotes[currentSlide.num] && (
-                <div style={{ marginTop: '10px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '8px', padding: '10px 14px', flexShrink: 0 }}>
+                <div style={{ marginTop: '10px', background: '#0f0f0f', border: '1px solid #333', borderRadius: '8px', padding: '10px 14px', flexShrink: 0 }}>
                   <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '5px', fontFamily: 'DM Sans, sans-serif' }}>Speaker Notes</div>
                   <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' }}>{speakerNotes[currentSlide.num]}</div>
                 </div>
@@ -377,20 +378,20 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
           )}
         </div>
 
-        {/* Right panel — desktop always, mobile as bottom sheet */}
+        {/* Right panel */}
         {(!m || showPanel) && (
           <div style={{
             width: m ? '100%' : '210px',
             position: m ? 'fixed' : 'static',
             bottom: m ? 0 : 'auto', left: m ? 0 : 'auto', right: m ? 0 : 'auto',
             maxHeight: m ? '72vh' : 'none',
-            borderLeft: m ? 'none' : '1px solid #1a1a1a',
-            borderTop: m ? '1px solid #222' : 'none',
+            borderLeft: m ? 'none' : '1px solid #333',
+            borderTop: m ? '1px solid #555' : 'none',
             overflowY: 'auto', padding: m ? '16px 20px 24px' : '16px 14px', flexShrink: 0,
             background: '#0A0A0A', zIndex: m ? 50 : 1,
             borderRadius: m ? '20px 20px 0 0' : '0'
           }}>
-            {m && <div style={{ width: '36px', height: '3px', background: '#333', borderRadius: '2px', margin: '0 auto 16px' }} />}
+            {m && <div style={{ width: '36px', height: '3px', background: '#555', borderRadius: '2px', margin: '0 auto 16px' }} />}
 
             {/* Theme */}
             <div style={{ marginBottom: '20px' }}>
@@ -398,7 +399,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
                 {THEMES.map(t => (
                   <div key={t.id} onClick={() => applyTheme(t.id)} title={t.label} style={{ position: 'relative', cursor: 'pointer' }}>
-                    <div style={{ aspectRatio: '1', borderRadius: '6px', background: t.bg, border: selectedThemeId === t.id ? `2px solid ${t.color}` : '2px solid #1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ aspectRatio: '1', borderRadius: '6px', background: t.bg, border: selectedThemeId === t.id ? `2px solid ${t.color}` : '2px solid #555', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: t.color }} />
                     </div>
                     {selectedThemeId === t.id && <div style={{ position: 'absolute', top: '-3px', right: '-3px', width: '12px', height: '12px', background: '#D4FF00', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px', color: '#000', fontWeight: '800' }}>✓</div>}
@@ -413,27 +414,27 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Font</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {FONTS.map(f => (
-                  <button key={f.id} onClick={() => applyFont(f.id)} style={{ padding: '7px 10px', background: selectedFontId === f.id ? '#111' : 'transparent', border: selectedFontId === f.id ? '1px solid #333' : '1px solid transparent', borderRadius: '6px', cursor: 'pointer', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontFamily: `'${f.id}', sans-serif`, fontSize: '12px', color: selectedFontId === f.id ? '#fff' : '#555', fontWeight: '600' }}>{f.id}</span>
+                  <button key={f.id} onClick={() => applyFont(f.id)} style={{ padding: '7px 10px', background: selectedFontId === f.id ? '#111' : 'transparent', border: selectedFontId === f.id ? '1px solid #555' : '1px solid transparent', borderRadius: '6px', cursor: 'pointer', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontFamily: `'${f.id}', sans-serif`, fontSize: '12px', color: selectedFontId === f.id ? '#fff' : '#e0e0e0', fontWeight: '600' }}>{f.id}</span>
                     {selectedFontId === f.id && <span style={{ color: '#D4FF00', fontSize: '10px' }}>✓</span>}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div style={{ height: '1px', background: '#111', marginBottom: '18px' }} />
+            <div style={{ height: '1px', background: '#333', marginBottom: '18px' }} />
 
             {/* AI Chat */}
             <div>
               <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>AI Edit</div>
-              <input value={aiMessage} onChange={e => setAiMessage(e.target.value)} onKeyDown={e => e.key === 'Enter' && askAI()} placeholder="e.g. Make more detailed..." style={{ width: '100%', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', padding: '10px', color: '#fff', fontSize: '12px', outline: 'none', fontFamily: 'DM Sans, sans-serif', boxSizing: 'border-box', marginBottom: '7px' }} />
-              <button onClick={askAI} disabled={aiLoading || !aiMessage.trim()} style={{ width: '100%', padding: '10px', background: aiLoading ? '#111' : '#D4FF00', color: aiLoading ? '#444' : '#000', border: 'none', borderRadius: '7px', fontSize: '13px', fontWeight: '800', cursor: aiLoading ? 'not-allowed' : 'pointer', fontFamily: 'Syne, sans-serif' }}>
+              <input value={aiMessage} onChange={e => setAiMessage(e.target.value)} onKeyDown={e => e.key === 'Enter' && askAI()} placeholder="e.g. Make more detailed..." style={{ width: '100%', background: '#0f0f0f', border: '1px solid #555', borderRadius: '7px', padding: '10px', color: '#fff', fontSize: '12px', outline: 'none', fontFamily: 'DM Sans, sans-serif', boxSizing: 'border-box', marginBottom: '7px' }} />
+              <button onClick={askAI} disabled={aiLoading || !aiMessage.trim()} style={{ width: '100%', padding: '10px', background: aiLoading ? '#111' : '#D4FF00', color: aiLoading ? '#e0e0e0' : '#000', border: aiLoading ? '1px solid #555' : 'none', borderRadius: '7px', fontSize: '13px', fontWeight: '800', cursor: aiLoading ? 'not-allowed' : 'pointer', fontFamily: 'Syne, sans-serif' }}>
                 {aiLoading ? 'Thinking...' : 'Ask AI ✦'}
               </button>
-              {aiReply && <div style={{ marginTop: '8px', padding: '8px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{aiReply}</div>}
+              {aiReply && <div style={{ marginTop: '8px', padding: '8px', background: '#0f0f0f', border: '1px solid #333', borderRadius: '7px', fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{aiReply}</div>}
               <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {['Make more detailed', 'Add statistics', 'Add speaker notes', 'Add notes to all slides', 'Simplify content'].map((action, i) => (
-                  <button key={i} onClick={() => setAiMessage(action)} style={{ padding: '6px 8px', background: 'transparent', border: '1px solid #111', borderRadius: '5px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', textAlign: 'left' }}>{action}</button>
+                  <button key={i} onClick={() => setAiMessage(action)} style={{ padding: '6px 8px', background: 'transparent', border: '1px solid #555', borderRadius: '5px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', textAlign: 'left' }}>{action}</button>
                 ))}
               </div>
             </div>

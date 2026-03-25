@@ -55,14 +55,14 @@ export default function TopicInputPage({ nav }) {
   return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', color: '#fff', fontFamily: 'Syne, sans-serif' }}>
       {/* Nav */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '14px 18px' : '18px 40px', borderBottom: '1px solid #1a1a1a', position: 'sticky', top: 0, background: '#0A0A0A', zIndex: 10 }}>
+      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: m ? '14px 18px' : '18px 40px', borderBottom: '1px solid #333', position: 'sticky', top: 0, background: '#0A0A0A', zIndex: 10 }}>
         <div style={{ fontSize: m ? '19px' : '22px', fontWeight: '800', letterSpacing: '-1px', cursor: 'pointer' }} onClick={nav.toLanding}>
           For<span style={{ color: '#D4FF00' }}>GenZ</span>
         </div>
         <div style={{ display: 'flex', gap: m ? '8px' : '16px', alignItems: 'center' }}>
           {!m && <button onClick={nav.toLanding} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>Home</button>}
           {!m && <button onClick={nav.toMyDecks} style={{ background: 'none', border: 'none', color: '#e0e0e0', fontSize: '14px', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>My Decks</button>}
-          <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '700', color: '#D4FF00', border: '1px solid #333' }}>U</div>
+          <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '700', color: '#D4FF00', border: '1px solid #555' }}>U</div>
         </div>
       </nav>
 
@@ -80,16 +80,19 @@ export default function TopicInputPage({ nav }) {
             <button key={i}
               onClick={() => setTopic(s)}
               style={{
-                padding: '6px 12px', border: `1px solid ${topic === s ? '#D4FF00' : '#222'}`,
-                borderRadius: '100px', fontSize: '12px', color: topic === s ? '#D4FF00' : '#666',
-                cursor: 'pointer', background: 'transparent', fontFamily: 'DM Sans, sans-serif', transition: 'all 0.15s'
+                padding: '6px 12px',
+                border: `1px solid ${topic === s ? '#D4FF00' : '#555'}`,
+                borderRadius: '100px', fontSize: '12px',
+                color: topic === s ? '#D4FF00' : '#e0e0e0',
+                cursor: 'pointer', background: 'transparent',
+                fontFamily: 'DM Sans, sans-serif', transition: 'all 0.15s'
               }}
             >{s}</button>
           ))}
         </div>
 
         {/* Input box */}
-        <div style={{ background: '#0f0f0f', border: '1px solid #222', borderRadius: '14px', overflow: 'visible', marginBottom: '18px' }}>
+        <div style={{ background: '#0f0f0f', border: '1px solid #555', borderRadius: '14px', overflow: 'visible', marginBottom: '18px' }}>
           <textarea
             style={{ width: '100%', padding: '18px', background: 'transparent', border: 'none', color: '#fff', fontSize: m ? '14px' : '16px', fontFamily: 'DM Sans, sans-serif', resize: 'none', outline: 'none', minHeight: '90px', boxSizing: 'border-box' }}
             placeholder="e.g. The impact of social media on Gen Z mental health..."
@@ -97,15 +100,15 @@ export default function TopicInputPage({ nav }) {
             onChange={e => setTopic(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleGenerate()}
           />
-          <div style={{ height: '1px', background: '#1a1a1a', margin: '0 16px' }} />
+          <div style={{ height: '1px', background: '#555', margin: '0 16px' }} />
           <div style={{ display: 'flex', gap: '7px', padding: '12px 16px', flexWrap: 'wrap', alignItems: 'center' }}>
             <span style={{ fontSize: '11px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'DM Sans, sans-serif', marginRight: '4px' }}>Style:</span>
             {STYLES.map(s => (
               <button key={s.id} onClick={() => setStyle(s.id)} style={{
                 padding: '5px 12px',
                 background: style === s.id ? '#D4FF00' : 'transparent',
-                color: style === s.id ? '#000' : '#555',
-                border: `1px solid ${style === s.id ? '#D4FF00' : '#222'}`,
+                color: style === s.id ? '#000' : '#e0e0e0',
+                border: `1px solid ${style === s.id ? '#D4FF00' : '#555'}`,
                 borderRadius: '100px', fontSize: '12px', cursor: 'pointer',
                 fontFamily: 'Syne, sans-serif', fontWeight: style === s.id ? '700' : '400', transition: 'all 0.15s'
               }}>{s.label}</button>
@@ -115,16 +118,16 @@ export default function TopicInputPage({ nav }) {
 
         {/* Slide count + Tone */}
         <div style={{ display: 'grid', gridTemplateColumns: m ? '1fr' : '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
-          <div style={{ background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '10px', padding: '14px 16px' }}>
+          <div style={{ background: '#0f0f0f', border: '1px solid #555', borderRadius: '10px', padding: '14px 16px' }}>
             <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Number of Slides</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {SLIDE_COUNTS.map(n => (
                 <button key={n} onClick={() => setSlideCount(n)} style={{
                   padding: '5px 12px',
                   background: slideCount === n ? '#D4FF0020' : 'transparent',
-                  border: slideCount === n ? '1px solid #D4FF00' : '1px solid #222',
+                  border: slideCount === n ? '1px solid #D4FF00' : '1px solid #555',
                   borderRadius: '100px', fontSize: '12px',
-                  color: slideCount === n ? '#D4FF00' : '#555',
+                  color: slideCount === n ? '#D4FF00' : '#e0e0e0',
                   cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', transition: 'all 0.15s'
                 }}>{n}</button>
               ))}
@@ -132,16 +135,16 @@ export default function TopicInputPage({ nav }) {
             <div style={{ marginTop: '8px', fontSize: '13px', color: '#D4FF00', fontFamily: 'DM Sans, sans-serif' }}>{slideCount} slides selected</div>
           </div>
 
-          <div style={{ background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '10px', padding: '14px 16px' }}>
+          <div style={{ background: '#0f0f0f', border: '1px solid #555', borderRadius: '10px', padding: '14px 16px' }}>
             <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontFamily: 'DM Sans, sans-serif' }}>Tone</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {TONES.map(t => (
                 <button key={t} onClick={() => setTone(t)} style={{
                   padding: '5px 12px',
                   background: tone === t ? '#D4FF0020' : 'transparent',
-                  border: tone === t ? '1px solid #D4FF00' : '1px solid #222',
+                  border: tone === t ? '1px solid #D4FF00' : '1px solid #555',
                   borderRadius: '100px', fontSize: '12px',
-                  color: tone === t ? '#D4FF00' : '#555',
+                  color: tone === t ? '#D4FF00' : '#e0e0e0',
                   cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', transition: 'all 0.15s'
                 }}>{t}</button>
               ))}
@@ -158,7 +161,7 @@ export default function TopicInputPage({ nav }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: m ? 'repeat(4, 1fr)' : 'repeat(6, 1fr)', gap: '8px' }}>
             {THEMES.map(t => (
-              <div key={t.id} onClick={() => setSelectedTheme(t.id)} style={{ borderRadius: '10px', overflow: 'hidden', cursor: 'pointer', border: selectedTheme === t.id ? '2px solid #D4FF00' : '2px solid #1a1a1a', transition: 'all 0.15s', position: 'relative' }}>
+              <div key={t.id} onClick={() => setSelectedTheme(t.id)} style={{ borderRadius: '10px', overflow: 'hidden', cursor: 'pointer', border: selectedTheme === t.id ? '2px solid #D4FF00' : '2px solid #555', transition: 'all 0.15s', position: 'relative' }}>
                 <div style={{ height: '34px', background: t.preview[0], display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '0 8px' }}>
                   {t.preview.slice(1).map((c, i) => (
                     <div key={i} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c }} />
@@ -177,8 +180,9 @@ export default function TopicInputPage({ nav }) {
           style={{
             width: '100%', padding: m ? '16px' : '18px',
             background: topic.trim() ? '#D4FF00' : '#111',
-            color: topic.trim() ? '#000' : '#333',
-            border: 'none', borderRadius: '12px',
+            color: topic.trim() ? '#000' : '#e0e0e0',
+            border: topic.trim() ? 'none' : '1px solid #555',
+            borderRadius: '12px',
             fontSize: m ? '16px' : '18px', fontWeight: '800',
             cursor: topic.trim() ? 'pointer' : 'not-allowed',
             fontFamily: 'Syne, sans-serif', letterSpacing: '-0.5px'
