@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-const API = 'https://forgenz-production.up.railway.app';
+const API = 'https://forgenz-pro.up.railway.app';
 
 const SLIDE_TYPES = [
   { type: 'title', label: 'Title Slide', icon: '🏷️' },
