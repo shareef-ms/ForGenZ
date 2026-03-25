@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API = 'http://localhost:5000';
+import API from './config';
 
 const EXPORT_OPTIONS = [
   { id: 'pptx', title: 'PowerPoint .pptx', desc: 'Works in MS PowerPoint & Google Slides', badge: 'recommended', badgeColor: '#D4FF00', available: true },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-const API = 'http://localhost:5000';
+import API from './config';
 
 const SLIDE_TYPES = [
   { type: 'title', label: 'Title Slide', icon: '🏷️' },
