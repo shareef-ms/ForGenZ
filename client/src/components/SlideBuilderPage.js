@@ -297,7 +297,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
         </div>
 
         {!m && (
-          <div style={{ fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif', position: 'absolute', left: '50%', transform: 'translateX(-50%)', maxWidth: '260px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+          <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', position: 'absolute', left: '50%', transform: 'translateX(-50%)', maxWidth: '260px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
             {deckTitle}
           </div>
         )}
@@ -362,14 +362,14 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               {/* Prev/Next */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', paddingTop: '10px', flexShrink: 0 }}>
                 <button onClick={() => setCurrentIdx(i => Math.max(0, i - 1))} disabled={currentIdx === 0} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #1a1a1a', borderRadius: '7px', color: currentIdx === 0 ? '#2a2a2a' : '#666', cursor: currentIdx === 0 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>← Prev</button>
-                <span style={{ fontSize: '12px', color: '#333', fontFamily: 'DM Sans, sans-serif' }}>{currentIdx + 1} / {slides.length}</span>
+                <span style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{currentIdx + 1} / {slides.length}</span>
                 <button onClick={() => setCurrentIdx(i => Math.min(slides.length - 1, i + 1))} disabled={currentIdx === slides.length - 1} style={{ padding: '7px 14px', background: 'transparent', border: '1px solid #1a1a1a', borderRadius: '7px', color: currentIdx === slides.length - 1 ? '#2a2a2a' : '#666', cursor: currentIdx === slides.length - 1 ? 'default' : 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '12px' }}>Next →</button>
               </div>
 
               {/* Speaker notes desktop */}
               {!m && speakerNotes[currentSlide.num] && (
                 <div style={{ marginTop: '10px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '8px', padding: '10px 14px', flexShrink: 0 }}>
-                  <div style={{ fontSize: '10px', color: '#333', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '5px', fontFamily: 'DM Sans, sans-serif' }}>Speaker Notes</div>
+                  <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '5px', fontFamily: 'DM Sans, sans-serif' }}>Speaker Notes</div>
                   <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', lineHeight: '1.6' }}>{speakerNotes[currentSlide.num]}</div>
                 </div>
               )}
@@ -394,7 +394,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
             {/* Theme */}
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontSize: '10px', color: '#444', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Theme</div>
+              <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Theme</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
                 {THEMES.map(t => (
                   <div key={t.id} onClick={() => applyTheme(t.id)} title={t.label} style={{ position: 'relative', cursor: 'pointer' }}>
@@ -402,7 +402,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
                       <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: t.color }} />
                     </div>
                     {selectedThemeId === t.id && <div style={{ position: 'absolute', top: '-3px', right: '-3px', width: '12px', height: '12px', background: '#D4FF00', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px', color: '#000', fontWeight: '800' }}>✓</div>}
-                    <div style={{ fontSize: '7px', color: '#333', textAlign: 'center', marginTop: '2px', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{t.label}</div>
+                    <div style={{ fontSize: '7px', color: '#e0e0e0', textAlign: 'center', marginTop: '2px', fontFamily: 'DM Sans, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{t.label}</div>
                   </div>
                 ))}
               </div>
@@ -410,7 +410,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
             {/* Font */}
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontSize: '10px', color: '#444', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Font</div>
+              <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Font</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {FONTS.map(f => (
                   <button key={f.id} onClick={() => applyFont(f.id)} style={{ padding: '7px 10px', background: selectedFontId === f.id ? '#111' : 'transparent', border: selectedFontId === f.id ? '1px solid #333' : '1px solid transparent', borderRadius: '6px', cursor: 'pointer', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -425,7 +425,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
 
             {/* AI Chat */}
             <div>
-              <div style={{ fontSize: '10px', color: '#444', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>AI Edit</div>
+              <div style={{ fontSize: '10px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>AI Edit</div>
               <input value={aiMessage} onChange={e => setAiMessage(e.target.value)} onKeyDown={e => e.key === 'Enter' && askAI()} placeholder="e.g. Make more detailed..." style={{ width: '100%', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', padding: '10px', color: '#fff', fontSize: '12px', outline: 'none', fontFamily: 'DM Sans, sans-serif', boxSizing: 'border-box', marginBottom: '7px' }} />
               <button onClick={askAI} disabled={aiLoading || !aiMessage.trim()} style={{ width: '100%', padding: '10px', background: aiLoading ? '#111' : '#D4FF00', color: aiLoading ? '#444' : '#000', border: 'none', borderRadius: '7px', fontSize: '13px', fontWeight: '800', cursor: aiLoading ? 'not-allowed' : 'pointer', fontFamily: 'Syne, sans-serif' }}>
                 {aiLoading ? 'Thinking...' : 'Ask AI ✦'}
@@ -433,7 +433,7 @@ export default function SlideBuilderPage({ nav, slides, setSlides, deckTitle, sp
               {aiReply && <div style={{ marginTop: '8px', padding: '8px', background: '#0f0f0f', border: '1px solid #1a1a1a', borderRadius: '7px', fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{aiReply}</div>}
               <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {['Make more detailed', 'Add statistics', 'Add speaker notes', 'Add notes to all slides', 'Simplify content'].map((action, i) => (
-                  <button key={i} onClick={() => setAiMessage(action)} style={{ padding: '6px 8px', background: 'transparent', border: '1px solid #111', borderRadius: '5px', color: '#444', fontSize: '11px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', textAlign: 'left' }}>{action}</button>
+                  <button key={i} onClick={() => setAiMessage(action)} style={{ padding: '6px 8px', background: 'transparent', border: '1px solid #111', borderRadius: '5px', color: '#e0e0e0', fontSize: '11px', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', textAlign: 'left' }}>{action}</button>
                 ))}
               </div>
             </div>

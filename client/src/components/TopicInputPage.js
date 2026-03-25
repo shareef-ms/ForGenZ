@@ -99,7 +99,7 @@ export default function TopicInputPage({ nav }) {
           />
           <div style={{ height: '1px', background: '#1a1a1a', margin: '0 16px' }} />
           <div style={{ display: 'flex', gap: '7px', padding: '12px 16px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: '11px', color: '#444', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'DM Sans, sans-serif', marginRight: '4px' }}>Style:</span>
+            <span style={{ fontSize: '11px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'DM Sans, sans-serif', marginRight: '4px' }}>Style:</span>
             {STYLES.map(s => (
               <button key={s.id} onClick={() => setStyle(s.id)} style={{
                 padding: '5px 12px',

@@ -33,7 +33,7 @@ function DeckCard({ deck, onClick }) {
       {/* Info */}
       <div style={{ padding: '12px 14px' }}>
         <div style={{ fontSize: '14px', fontWeight: '700', color: '#fff', marginBottom: '3px', fontFamily: 'Syne, sans-serif', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{deck.title}</div>
-        <div style={{ fontSize: '11px', color: '#444', fontFamily: 'DM Sans, sans-serif', marginBottom: '6px' }}>{timeAgo(deck.createdAt)}</div>
+        <div style={{ fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', marginBottom: '6px' }}>{timeAgo(deck.createdAt)}</div>
         <div style={{ fontSize: '11px', color: accent, fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>{deck.slideCount} slides</div>
       </div>
     </div>
@@ -94,12 +94,12 @@ export default function MyDecksPage({ nav, decks }) {
         />
 
         {filtered.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: m ? '48px 0' : '80px 0', color: '#333' }}>
+          <div style={{ textAlign: 'center', padding: m ? '48px 0' : '80px 0', color: '#e0e0e0' }}>
             {decks.length === 0 ? (
               <>
                 <div style={{ fontSize: '44px', marginBottom: '14px' }}>📭</div>
                 <div style={{ fontSize: m ? '16px' : '18px', fontWeight: '700', marginBottom: '7px' }}>No decks yet</div>
-                <div style={{ fontSize: '13px', color: '#444', fontFamily: 'DM Sans, sans-serif', marginBottom: '20px' }}>Generate your first presentation to see it here</div>
+                <div style={{ fontSize: '13px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', marginBottom: '20px' }}>Generate your first presentation to see it here</div>
                 <button onClick={nav.toTopic} style={{ padding: '13px 28px', background: '#D4FF00', color: '#000', border: 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '800', cursor: 'pointer', fontFamily: 'Syne, sans-serif' }}>
                   Create First Deck 🔥
                 </button>

@@ -18,7 +18,7 @@ export default function LandingPage({ nav }) {
     logoAccent: { color: '#D4FF00' },
     ctaBtn: { padding: m ? '8px 14px' : '10px 24px', background: '#D4FF00', color: '#000', border: 'none', borderRadius: '8px', fontFamily: 'Syne, sans-serif', fontSize: m ? '13px' : '14px', fontWeight: '700', cursor: 'pointer' },
     hero: { padding: m ? '44px 20px 36px' : '80px 40px 60px', maxWidth: '900px' },
-    badge: { display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 14px', border: '1px solid #333', borderRadius: '6px', fontSize: '13px', color: '#aaa', marginBottom: '24px', fontFamily: 'DM Sans, sans-serif' },
+    badge: { display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 14px', border: '1px solid #333', borderRadius: '6px', fontSize: '13px', color: '#e0e0e0', marginBottom: '24px', fontFamily: 'DM Sans, sans-serif' },
     h1: { fontSize: m ? 'clamp(38px, 11vw, 56px)' : 'clamp(48px, 7vw, 88px)', fontWeight: '800', lineHeight: '1.0', letterSpacing: m ? '-2px' : '-3px', marginBottom: '20px', color: '#fff' },
     subtext: { fontSize: m ? '15px' : '18px', color: '#e0e0e0', maxWidth: '500px', lineHeight: '1.6', marginBottom: '32px', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0' },
     btnRow: { display: 'flex', alignItems: 'center', gap: m ? '14px' : '20px', flexWrap: 'wrap' },
@@ -40,7 +40,7 @@ export default function LandingPage({ nav }) {
     cta: { padding: m ? '44px 20px' : '80px 40px', borderTop: '1px solid #1a1a1a', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' },
     ctaTitle: { fontSize: m ? 'clamp(26px, 8vw, 40px)' : 'clamp(32px, 5vw, 56px)', fontWeight: '800', letterSpacing: '-2px', color: '#fff', maxWidth: '600px', lineHeight: '1.1' },
     footer: { padding: m ? '18px 20px' : '24px 40px', borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' },
-    footerText: { fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif' },
+    footerText: { fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' },
   };
 
   return (

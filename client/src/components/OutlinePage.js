@@ -189,7 +189,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
               <div style={{ fontSize: m ? '18px' : '22px', fontWeight: '800', letterSpacing: '-0.5px', marginBottom: '4px' }}>
                 {m ? `${topic} 📋` : `Outline · ${topic} 📋`}
               </div>
-              <div style={{ fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>
+              <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>
                 {outline.length} slides · {m ? 'tap type to change' : 'drag ⠿ to reorder · click type badge to change'}
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
           {loading && (
             <div style={{ textAlign: 'center', padding: '60px 0' }}>
               <div style={{ width: '28px', height: '28px', border: '3px solid #1a1a1a', borderTop: '3px solid #D4FF00', borderRadius: '50%', margin: '0 auto 14px', animation: 'spin 0.8s linear infinite' }} />
-              <div style={{ fontSize: '14px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>Generating outline for "{topic}"...</div>
+              <div style={{ fontSize: '14px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>Generating outline for "{topic}"...</div>
             </div>
           )}
 
@@ -242,8 +242,8 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
                 opacity: dragIdx === idx ? 0.4 : 1, transition: 'all 0.1s'
               }}
             >
-              {!m && <span style={{ color: '#333', cursor: 'grab', fontSize: '16px', flexShrink: 0, userSelect: 'none' }}>⠿</span>}
-              <span style={{ fontSize: '11px', color: '#333', minWidth: m ? '16px' : '22px', fontFamily: 'DM Sans, sans-serif' }}>{String(slide.num).padStart(2, '0')}</span>
+              {!m && <span style={{ color: '#e0e0e0', cursor: 'grab', fontSize: '16px', flexShrink: 0, userSelect: 'none' }}>⠿</span>}
+              <span style={{ fontSize: '11px', color: '#e0e0e0', minWidth: m ? '16px' : '22px', fontFamily: 'DM Sans, sans-serif' }}>{String(slide.num).padStart(2, '0')}</span>
 
               {/* Type badge */}
               <div style={{ position: 'relative', flexShrink: 0 }} ref={editingType === idx ? typeMenuRef : null}>
@@ -291,7 +291,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
 
               <button
                 onClick={() => deleteSlide(idx)}
-                style={{ background: 'transparent', border: 'none', color: '#333', cursor: 'pointer', fontSize: '13px', padding: '2px 4px', flexShrink: 0 }}
+                style={{ background: 'transparent', border: 'none', color: '#e0e0e0', cursor: 'pointer', fontSize: '13px', padding: '2px 4px', flexShrink: 0 }}
                 onMouseEnter={e => e.target.style.color = '#FF6B6B'}
                 onMouseLeave={e => e.target.style.color = '#333'}
               >✕</button>
@@ -301,7 +301,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
           {!loading && outline.length > 0 && (
             <button
               onClick={addSlide}
-              style={{ width: '100%', padding: '12px', background: 'transparent', border: '1px dashed #1a1a1a', borderRadius: '10px', color: '#333', fontSize: '13px', cursor: 'pointer', marginTop: '6px', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ width: '100%', padding: '12px', background: 'transparent', border: '1px dashed #1a1a1a', borderRadius: '10px', color: '#e0e0e0', fontSize: '13px', cursor: 'pointer', marginTop: '6px', fontFamily: 'DM Sans, sans-serif' }}
               onMouseEnter={e => { e.target.style.borderColor = '#D4FF00'; e.target.style.color = '#D4FF00'; }}
               onMouseLeave={e => { e.target.style.borderColor = '#1a1a1a'; e.target.style.color = '#333'; }}
             >+ Add Slide</button>
@@ -312,21 +312,21 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
         {!m && (
           <div style={{ width: '220px', borderLeft: '1px solid #1a1a1a', padding: '24px 18px', overflowY: 'auto', flexShrink: 0 }}>
             <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontSize: '11px', color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px', fontFamily: 'DM Sans, sans-serif' }}>Type Breakdown</div>
+              <div style={{ fontSize: '11px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px', fontFamily: 'DM Sans, sans-serif' }}>Type Breakdown</div>
               {outline.length > 0 ? (
                 Object.entries(outline.reduce((acc, s) => { acc[s.type] = (acc[s.type] || 0) + 1; return acc; }, {}))
                   .sort((a, b) => b[1] - a[1]).map(([type, count]) => (
                     <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                       <div style={{ width: `${(count / outline.length) * 80}px`, height: '4px', background: TYPE_COLORS[type] || '#444', borderRadius: '2px', minWidth: '8px' }} />
                       <span style={{ fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', flex: 1 }}>{type}</span>
-                      <span style={{ fontSize: '11px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>{count}</span>
+                      <span style={{ fontSize: '11px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{count}</span>
                     </div>
                   ))
-              ) : <div style={{ fontSize: '12px', color: '#333', fontFamily: 'DM Sans, sans-serif' }}>Loading...</div>}
+              ) : <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>Loading...</div>}
             </div>
 
             <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontSize: '11px', color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px', fontFamily: 'DM Sans, sans-serif' }}>Deck Summary</div>
+              <div style={{ fontSize: '11px', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px', fontFamily: 'DM Sans, sans-serif' }}>Deck Summary</div>
               {[
                 { label: 'Total Slides', value: outline.length },
                 { label: 'Style', value: style },
@@ -334,7 +334,7 @@ export default function OutlinePage({ nav, topic, style, slideCount, detail }) {
                 { label: 'Charts', value: outline.filter(s => ['piechart','barchart','donut'].includes(s.type)).length },
               ].map(({ label, value }) => (
                 <div key={label} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #111' }}>
-                  <span style={{ fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
+                  <span style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
                   <span style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>{value}</span>
                 </div>
               ))}

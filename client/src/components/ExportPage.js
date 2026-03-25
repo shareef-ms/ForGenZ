@@ -78,7 +78,7 @@ export default function ExportPage({ nav, slides, deckTitle, speakerNotes }) {
           <div style={{ width: m ? '38px' : '48px', height: m ? '38px' : '48px', background: '#1a1a1a', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: m ? '18px' : '22px', flexShrink: 0 }}>📊</div>
           <div style={{ minWidth: 0 }}>
             <div style={{ fontSize: m ? '14px' : '17px', fontWeight: '700', color: '#fff', marginBottom: '3px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{deckTitle}</div>
-            <div style={{ fontSize: '12px', color: '#444', fontFamily: 'DM Sans, sans-serif', marginBottom: '4px' }}>Generated just now</div>
+            <div style={{ fontSize: '12px', color: '#e0e0e0', fontFamily: 'DM Sans, sans-serif', marginBottom: '4px' }}>Generated just now</div>
             <div style={{ fontSize: '12px', color: '#D4FF00', fontFamily: 'DM Sans, sans-serif', fontWeight: '600' }}>
               {slides.length} slides{chartCount > 0 ? ` · ${chartCount} charts` : ''}{hasNotes ? ' · Notes included' : ''}
             </div>
